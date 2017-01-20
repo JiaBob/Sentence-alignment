@@ -39,10 +39,12 @@ class Thread1(threading.Thread):
         for index in range(len(Mfile[0])):
             cpath=Mfile[0][index]
             ppath=Mfile[1][index]
+
             threadLock.acquire()
             global current
             current=index
             threadLock.release()
+
             chfile=open(cpath,'rb+')
             s1=chfile.read()
             coding=chardet.detect(s1)['encoding']
